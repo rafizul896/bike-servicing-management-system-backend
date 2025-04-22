@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 });
 
 // for global error
-app.use(globalErrorHandler)
+app.use(globalErrorHandler);
 
 // for not found route
 app.use(notFound);
