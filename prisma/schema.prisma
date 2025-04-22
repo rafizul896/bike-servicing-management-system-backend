@@ -39,7 +39,6 @@ model ServiceRecord  {
   description String
   status ServiceStatus @default(pending)
 
-
   @@map("serviceRecords")
 }
 
