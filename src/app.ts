@@ -5,6 +5,7 @@ import { CustomerRoutes } from './app/modules/Customer/customer.route';
 import notFound from './app/middlewares/notFound';
 import globalErrorHandler from './app/middlewares/globalErrorHandler';
 import { BikeRoutes } from './app/modules/Bike/bike.route';
+import { ServiceRecordRoutes } from './app/modules/ServiceRecord/serviceRecord.route';
 
 const app: Application = express();
 app.use(cors());
@@ -16,6 +17,7 @@ app.use(express.json());
 // application routes
 app.use('/api/customers', CustomerRoutes);
 app.use('/api/bikes', BikeRoutes);
+app.use('/api/services', ServiceRecordRoutes);
 
 app.get('/', (req, res) => {
   res.send({
