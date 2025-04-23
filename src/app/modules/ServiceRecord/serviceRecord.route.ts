@@ -17,6 +17,6 @@ router.get('/status', ServiceRecordControllers.overdueServices);
 
 router.get('/:serviceId', ServiceRecordControllers.getSpecificServiceRecord);
 
-router.put('/:serviceId', ServiceRecordControllers.MarkAServiceCompleted);
+router.put('/:serviceId/complete', ServiceRecordControllers.MarkAServiceCompleted);
 
 export const ServiceRecordRoutes = router;
