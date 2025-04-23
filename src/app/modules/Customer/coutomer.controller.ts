@@ -32,7 +32,7 @@ const getSpecificCustomer = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: status.OK,
     success: true,
-    message: 'Customers fetched successfully',
+    message: 'Customer fetched successfully',
     data: result,
   });
 });
@@ -47,7 +47,7 @@ const updateCustomerDetails = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: status.OK,
     success: true,
-    message: 'Customers updated  successfully',
+    message: 'Customer updated  successfully',
     data: result,
   });
 });
@@ -59,7 +59,7 @@ const deleteCustomerFromDB = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: status.OK,
     success: true,
-    message: 'Customers deleted successfully',
+    message: 'Customer deleted successfully',
     data: result,
   });
 });

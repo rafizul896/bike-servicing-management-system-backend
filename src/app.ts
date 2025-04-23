@@ -1,10 +1,10 @@
-import express, { Application, NextFunction, Request, Response } from 'express';
+import express, { Application } from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import status from 'http-status';
 import { CustomerRoutes } from './app/modules/Customer/customer.route';
 import notFound from './app/middlewares/notFound';
 import globalErrorHandler from './app/middlewares/globalErrorHandler';
+import { BikeRoutes } from './app/modules/Bike/bike.route';
 
 const app: Application = express();
 app.use(cors());
@@ -15,6 +15,7 @@ app.use(express.json());
 
 // application routes
 app.use('/api/customers', CustomerRoutes);
+app.use('/api/bikes', BikeRoutes);
 
 app.get('/', (req, res) => {
   res.send({

@@ -25,7 +25,10 @@ const getSpecificCustomerFromDB = async (id: string) => {
   return result;
 };
 
-const updateCustomerDetailsIntoDB = async (id: string, payload: any) => {
+const updateCustomerDetailsIntoDB = async (
+  id: string,
+  payload: Partial<Customer>,
+) => {
   const result = await prisma.customer.update({
     where: {
       customerId: id,
