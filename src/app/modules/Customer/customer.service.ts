@@ -1,5 +1,7 @@
 import { Customer } from '@prisma/client';
 import prisma from '../../utils/prisma';
+import AppError from '../../errors/AppError';
+import status from 'http-status';
 
 const createCutomerIntoDB = async (data: Customer) => {
   const result = await prisma.customer.create({
@@ -16,11 +18,15 @@ const getAllCustomersFromDB = async () => {
 };
 
 const getSpecificCustomerFromDB = async (id: string) => {
-  const result = await prisma.customer.findUniqueOrThrow({
+  const result = await prisma.customer.findUnique({
     where: {
       customerId: id,
     },
   });
+
+  if (!result) {
+    throw new AppError(status.NOT_FOUND, 'Customer not found');
+  }
 
   return result;
 };

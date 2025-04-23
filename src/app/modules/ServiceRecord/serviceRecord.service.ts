@@ -1,5 +1,7 @@
 import { ServiceRecord } from '@prisma/client';
 import prisma from '../../utils/prisma';
+import AppError from '../../errors/AppError';
+import status from 'http-status';
 
 const createServiceRecordIntoDB = async (data: ServiceRecord) => {
   const result = await prisma.serviceRecord.create({
@@ -16,11 +18,15 @@ const getAllServiceRecordsFromDB = async () => {
 };
 
 const getSpecificServiceRecordFromDB = async (id: string) => {
-  const result = await prisma.serviceRecord.findUniqueOrThrow({
+  const result = await prisma.serviceRecord.findUnique({
     where: {
       serviceId: id,
     },
   });
+
+  if (!result) {
+    throw new AppError(status.NOT_FOUND, 'Service Record not found');
+  }
 
   return result;
 };
